@@ -1,0 +1,70 @@
+<h2 class="text-center">{{ title }}</h2>
+<br />
+<hr />
+
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="container">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+          <div class="display-block">
+            <label> First Name: </label>
+            <input
+              type="text"
+              formControlName="firstName"
+              placeholder="Enter your first Name"
+            />
+            <div
+              *ngIf="
+                regForm.controls['firstName'].touched &&
+                regForm.controls['firstName'].invalid
+              "
+              class="alert-danger"
+            >
+              <div
+                *ngIf="
+                  regForm.controls['firstName'].errors &&
+                  regForm.controls['firstName'].errors.required
+                "
+              >
+                First name is required.
+              </div>
+            </div>
+          </div>
+          <div class="display-block margin-top-10">
+            <label> Last Name: </label>
+            <input
+              type="text"
+              formControlName="lastName"
+              placeholder="Enter Your Last Name"
+            />
+            <div *ngIf="
+                regForm.controls['lastName'].touched &&
+                regForm.controls['lastName'].invalid
+              "
+              class="alert-danger"
+            >
+              <div
+                *ngIf="
+                  regForm.controls['lastName'].errors &&
+                  regForm.controls['lastName'].errors.required
+                "
+              >
+                Last name is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Phone Number :</label>
+              <input
+                type="number"
+                placeholder="Enter your Number"
+                formControlName="contact"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
